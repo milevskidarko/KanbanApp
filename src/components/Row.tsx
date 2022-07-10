@@ -25,6 +25,9 @@ const Row = ({ row, column, board, setBoard }: Props) => {
   const move = {
     right: (column: number) => {
       const _board = [...board];
+      if (column === board.length - 1) {
+        return;
+      }
       const temp = _board[column].rows[row];
       _board[column].rows.splice(row, 1);
       _board[column + 1].rows.push(temp);
@@ -33,6 +36,9 @@ const Row = ({ row, column, board, setBoard }: Props) => {
     },
     left: (column: number) => {
       const _board = [...board];
+      if (column === 0) {
+        return;
+      }
       const temp = _board[column].rows[row];
       _board[column].rows.splice(row, 1);
       _board[column - 1].rows.push(temp);
@@ -41,6 +47,10 @@ const Row = ({ row, column, board, setBoard }: Props) => {
     },
     up: (column: number) => {
       const _board = [...board];
+
+      if (row === 0) {
+        return;
+      }
       const temp = _board[column].rows[row];
       _board[column].rows[row] = _board[column].rows[row - 1];
       _board[column].rows[row - 1] = temp;
@@ -49,6 +59,9 @@ const Row = ({ row, column, board, setBoard }: Props) => {
     },
     down: (column: number) => {
       const _board = [...board];
+      if (board[column].rows.length - 1 === row) {
+        return;
+      }
       const temp = _board[column].rows[row];
       _board[column].rows[row] = _board[column].rows[row + 1];
       _board[column].rows[row + 1] = temp;
@@ -63,7 +76,7 @@ const Row = ({ row, column, board, setBoard }: Props) => {
         <div></div>
         <div>
           <FontAwesomeIcon
-            className="arrow-btn"
+            className={row === 0 ? "iconLength" : "arrow-btn"}
             onClick={() => move.up(column)}
             icon={faChevronUp}
           />
@@ -72,7 +85,7 @@ const Row = ({ row, column, board, setBoard }: Props) => {
 
         <div>
           <FontAwesomeIcon
-            className="arrow-btn"
+            className={column === 0 ? "iconLength" : "arrow-btn"}
             onClick={() => move.left(column)}
             icon={faChevronLeft}
           />
@@ -81,7 +94,7 @@ const Row = ({ row, column, board, setBoard }: Props) => {
         <div>
           <FontAwesomeIcon
             onClick={() => move.right(column)}
-            className="arrow-btn"
+            className={column === board.length - 1 ? "iconLength" : "arrow-btn"}
             icon={faChevronRight}
           />
         </div>
@@ -89,7 +102,9 @@ const Row = ({ row, column, board, setBoard }: Props) => {
         <div></div>
         <div>
           <FontAwesomeIcon
-            className="arrow-btn"
+            className={
+              board[column].rows.length - 1 === row ? "iconLength" : "arrow-btn"
+            }
             onClick={() => move.down(column)}
             icon={faChevronDown}
           />
@@ -99,7 +114,7 @@ const Row = ({ row, column, board, setBoard }: Props) => {
 
       <div>
         <input
-          placeholder={`Column  ${row + 1}`}
+          placeholder="Enter title here"
           type="text"
           className="inputRow"
           onChange={handleRowTitle}

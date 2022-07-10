@@ -42,7 +42,7 @@ const Column = ({ index, board, setBoard }: Props) => {
     setBoard(_board);
   };
 
-  const addRow = (column: number, title = "") => {
+   const addRow = (column: number, title = "") => {
     _board[column].rows.push(title);
     setBoard(_board);
   };
