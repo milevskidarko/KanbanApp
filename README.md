@@ -11,14 +11,14 @@ Node Package Manager (NPM)
 React
 Clone the repository from Github
 
+### `git clone`
+git clone https://github.com/milevskidarko/-KanbanBoardSystem.git
 
 ### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### `git clone`
-https://github.com/milevskidarko/-KanbanBoardSystem.git
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
@@ -38,4 +38,3 @@ Your app is ready to be deployed!
 
 Project Status
 Completed and open for your contributions.
-# KanbanApp
